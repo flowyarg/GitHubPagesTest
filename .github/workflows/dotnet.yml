@@ -19,19 +19,19 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Copy file
+  #  - name: Copy file
       # You may pin to the exact commit or the version.
       # uses: canastro/copy-action@7ddff6fc153a2ea2cd0fb88ed9750544c051e399
-      uses: canastro/copy-action@0.0.2
-      with:
+  #    uses: canastro/copy-action@0.0.2
+  #    with:
         # Source file
-        source: "GitHubPagesTest/GitHubPagesTest.csproj"
+  #      source: "GitHubPagesTest/GitHubPagesTest.csproj"
         # Target file
-        target: "GitHubPagesTest.csproj"
+  #      target: "GitHubPagesTest.csproj"
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Project
-      run: dotnet publish "GitHubPagesTest.csproj" -c Release -o release --nologo
+      run: dotnet publish "GitHubPagesTest\GitHubPagesTest.csproj" -c Release -o release --nologo
     
     # changes the base-tag in index.html from '/' to 'GitHubPagesTest' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to GitHubPagesTest
