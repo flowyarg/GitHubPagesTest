@@ -25,7 +25,7 @@ jobs:
       uses: canastro/copy-action@0.0.2
       with:
         # Source file
-        source: "Github PagesTest\\GitHubPagesTest.csproj"
+        source: "GitHubPagesTest\\GitHubPagesTest.csproj"
         # Target file
         target: "GitHubPagesTest.csproj"
 
