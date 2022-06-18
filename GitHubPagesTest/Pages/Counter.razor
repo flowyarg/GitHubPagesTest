@@ -1,4 +1,7 @@
 ﻿@page "/counter"
+@using GitHubPagesTest.Services.Contract
+
+@inject IFirebaseDbService _firebaseDbService;
 
 <PageTitle>Counter</PageTitle>
 
@@ -16,14 +19,14 @@
 
     private string fileCount = "";
 
-    private void IncrementCount()
+    private async void IncrementCount()
     {
         currentCount++;
-        File.AppendAllText("Files\\Counter.txt", currentCount.ToString() + Environment.NewLine);
+        await _firebaseDbService.WriteCount(currentCount.ToString());
     }
 
-    private void ReadFileCount()
+    private async void ReadFileCount()
     {
-        fileCount = File.ReadAllLines("Files\\Counter.txt").Last();
+        fileCount = await _firebaseDbService.ReadCounts();
     }
 }
